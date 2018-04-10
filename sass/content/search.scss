@@ -1,0 +1,22 @@
+.over {
+    overflow-y: scroll;
+    display: grid;
+    grid-template-rows: 180px;
+}
+
+.searchOver {
+    overflow-y: scroll;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.size {
+    width: 150px;
+    height: 50px;
+}
+
+.basket {
+    margin-top: 20px;
+}
