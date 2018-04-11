@@ -2,7 +2,9 @@
 
 
 
-$results = connect()->query("select username from users where username = '$session'  ");
+$results = connect()->prepare("SELECT username FROM users WHERE username =:name  ");
+$results->bindParam(':name', $session);
+$results->execute();
 $row=$results->fetch();
 
 

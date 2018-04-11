@@ -13,8 +13,9 @@ else
 
     $database = connect();
 
-    $result = $database->query("SELECT b.username, b.ID, b.productID, b.qty,  p.name,p.manufacturer, p.price, p.stocklevel, p.agelimit FROM basket b  LEFT JOIN products p ON b.productID = p.ID WHERE b.username = '$session' ");
-
+    $result = $database->prepare("SELECT b.username, b.ID, b.productID, b.qty,  p.name,p.manufacturer, p.price, p.stocklevel, p.agelimit FROM basket b  LEFT JOIN products p ON b.productID = p.ID WHERE b.username = :username ");
+    $result->bindParam(":username", $session);
+    $result->execute();
 
 
 

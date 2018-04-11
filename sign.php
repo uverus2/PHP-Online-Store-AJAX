@@ -1,14 +1,15 @@
 <?php 
 include('functions.php');
-$usernames = $_POST["username"];
-$passwords = $_POST["password"];
+$usernames = htmlentities($_POST["username"]);
+$passwords = htmlentities($_POST["password"]);
 
 session_start();
 
-connect();
-$results =  connect()->query
-("select * from users where username = '$usernames' AND password = '$passwords'");
- 
+$database = connect();
+$results =$database->prepare("SELECT * FROM users WHERE username =:name AND password =:pass");
+$results->bindParam(':name', $usernames);
+$results->bindParam(':pass', $passwords);
+$results->execute();
  
 $loginRow=$results->fetch();
 

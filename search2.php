@@ -6,19 +6,24 @@ include('functions.php');
 
 
 
-   connect();
+   $database = connect();
 
 
     if ($di=="") {
 
-         $results = connect()->query("select * from products");
+         $results = $database->query("SELECT * FROM products");
 
         }
     else {
 
-    $results = connect()->query("select * from products where name ='$di'");
+        
+        $results=$database->prepare("SELECT * FROM products WHERE name='$di'");
+        $results->bindParam(':name', $di);
+        $results->execute();
     }
 
+  
+    
 
 
 ?>

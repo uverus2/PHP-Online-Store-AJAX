@@ -16,7 +16,9 @@ else
     $productID = htmlentities($_POST["productID"]);
     $qty = htmlentities($_POST["qty"]);
 
-    $productsQty=$database->query(" SELECT * FROM products WHERE ID = '$productID' ");
+    $productsQty=$database->prepare(" SELECT * FROM products WHERE ID = :productID ");
+    $productsQty->bindParam(":productID", $productID);
+    $results->execute();
 
     $row=$productsQty->fetch();
 
@@ -27,9 +29,18 @@ else
 
     }
     else {
-    $results=$database->query(" INSERT INTO basket ( productID, username, qty) VALUES ('$productID','$session','$qty')");
 
-    $products=$database->query(" UPDATE products SET stocklevel=stocklevel-'$qty' WHERE ID = '$productID' ") ;
+    $results=$database->prepare(" INSERT INTO basket ( productID, username, qty) VALUES (:productID,:username,:qty)");
+    $results->bindParam(":productID", $productID);
+    $results->bindParam(":username", $session);
+    $results->bindParam(":qty", $qty);
+    $results->execute();
+    
+
+    $products=$database->prepare(" UPDATE products SET stocklevel=stocklevel-:qty WHERE ID = :productID ");
+    $products->bindParam(":productID", $productID);
+    $products->bindParam(":qty", $qty);
+    $products->execute();
 
     header('Location:basket3.php');
 }

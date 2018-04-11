@@ -9,8 +9,10 @@ include('functions.php');
 
 $getID = htmlentities($_POST["id"]);
 
-connect();
-$results =  connect()->query("DELETE FROM products WHERE ID = '$getID'");
+$database = connect();
+$results = $database->prepare("DELETE FROM products WHERE ID = :delete");
+$results->bindParam(":delete", $getID);
+$results->execute();
 
 echo "Product Deleted";
 

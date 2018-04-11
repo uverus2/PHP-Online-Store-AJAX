@@ -9,7 +9,9 @@ $database = connect();
 
 
 
-$result = $database->query("DELETE FROM basket WHERE username='$session'");
+$result = $database->prepare("DELETE FROM basket WHERE username=:username");
+$result->bindParam(":username", $session);
+$result->execute();
 
 echo "Purchase was successful. Thank you for choosing Solent Stores. Get back to <a href='search.php'>Search</a> ";
 

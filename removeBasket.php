@@ -11,19 +11,25 @@ else
 {
 
     $basketID = htmlentities($_GET["ID"]);
+    $database = connect();
 
-
-    $results = connect()->query(" SELECT * FROM basket WHERE ID = '$basketID' ");
+    $results =$database->prepare(" SELECT * FROM basket WHERE ID =:basketID ");
+    $results->bindParam(':basketID', $basketID);
+    $results->execute();
 
     $row=$results->fetch();
     $qty = $row["qty"];
 
 
     if ($qty >= 2) {
-        $result = connect()->query(" UPDATE basket SET qty=qty-1 WHERE ID = '$basketID'");
+        $result =$database->prepare(" UPDATE basket SET qty=qty-1 WHERE ID =:basketID");
+        $result->bindParam(":basketID", $basketID);
+        $result->execute();
     }
     else {
-        $resul = connect()->query(" DELETE FROM basket WHERE ID = '$basketID'");
+        $resul =$database->prepare(" DELETE FROM basket WHERE ID = :basketID");
+        $resul->bindParam(":basketID", $basketID);
+        $resul->execute();
     }
 
     header('Location:basket3.php');

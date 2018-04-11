@@ -17,16 +17,20 @@ else
 
     if ($di=="") {
 
-         $result = $database->query("select * from products");
+         $result = $database->query("SELECT * FROM products");
 
         }
     else {
 
-    $result = $database->query("select * from products where name ='$di'");
+    $result = $database->prepare("SELECT * FROM products WHERE name =:thename");
+    $result->bindParam(":thename", $di);
+    $result->execute();
     }
 
 
-    $users = $database->query("SELECT * FROM users WHERE username = '$session' ");
+    $users = $database->prepare("SELECT * FROM users WHERE username = :username ");
+    $users->bindParam(":username", $session);
+    $users->execute();
     $age=$users->fetch();
 
     $day=$age["dayofbirth"];
