@@ -27,7 +27,7 @@ else
     <title>Logged IN Home</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body onload="mainOne()">
 
 <div class="grid">
 
@@ -39,19 +39,23 @@ else
 
         <?php include 'header.php';?>
 
-        <section>
+        <section class="section2">
 
 
-        <form class="formGrid" method="get" action="search.php">
+        <form class="formGrid " method="get" action="search.php">
             <h1 class="text1">Search our products...</h1>
-            <input class="search1" type="text" name="search">
+            <input class="search1" type="text" id="search" name="search">
             <input type="image" value="search" class="magnify" src="img/if_icon-111-search_314478.png">
         </form>
 
-        <div class="cover">
+        <div class="searchResponse" id="response">  </div>
+        
+        
+        <div class="userBasket" id="userB">  </div>
 
 
-        </div>
+        <div class="cover"> </div>
+        
 
     </section>
 
@@ -63,6 +67,7 @@ else
 
 </div>
     
+<script src="js/main.js"></script>
 </body>
 </html>
 

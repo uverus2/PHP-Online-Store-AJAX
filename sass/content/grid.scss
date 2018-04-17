@@ -53,8 +53,41 @@ section {
     grid-gap: 20px;
 }
 
+.section2 {
+    grid-area: section;
+    display: grid;
+    grid-template-areas: "form form" "cover cover" "search  user";
+    grid-template-rows: 70px 200px 150px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    overflow-y: scroll;
+}
+
+.overs {
+    display: grid;
+    grid-template-rows: 40px;
+}
+
+.searchResponse {
+    grid-area: search;
+}
+
+.userBasket {
+    grid-area: user;
+}
+
+$img:url("../img/image1.png");
+$img2:url("../img/image2.png");
+.cover {
+    background-image: $img;
+    grid-area: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .formGrid {
     display: grid;
+    grid-area: form;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 50px;
     grid-template-areas: "text1 search magnify";
@@ -64,14 +97,6 @@ section {
     grid-area: text1;
     justify-self: end;
     align-self: center;
-}
-
-$img:url("../img/image1.png");
-$img2:url("../img/image2.png");
-.cover {
-    background-image: $img;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 @media screen and (min-width: 1000px) {

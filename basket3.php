@@ -2,7 +2,7 @@
 session_start();
 include('functions.php');
 error_reporting(0);
-$session = $_SESSION["gatekeeper"];
+session_start();
 
 if ( !isset ($_SESSION["gatekeeper"]))
 {
@@ -10,7 +10,7 @@ if ( !isset ($_SESSION["gatekeeper"]))
 }
 else
 {  
-
+    $session = $_SESSION["gatekeeper"];
     $database = connect();
 
     $result = $database->prepare("SELECT b.username, b.ID, b.productID, b.qty,  p.name,p.manufacturer, p.price, p.stocklevel, p.agelimit FROM basket b  LEFT JOIN products p ON b.productID = p.ID WHERE b.username = :username ");
