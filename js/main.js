@@ -54,7 +54,7 @@ function responseS(e) {
 function remove(id) {
 
     var xhr2 = new XMLHttpRequest();
-    xhr2.open('GET', 'ajaxRemoveBasket.php?');
+    xhr2.open('GET', 'ajaxRemoveBasket.php?ID=' + id);
     xhr2.addEventListener("load", removing);
     xhr2.send();
 }

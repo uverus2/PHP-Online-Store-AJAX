@@ -1,7 +1,7 @@
 <?php 
 
 
-
+include('functions.php');
     $basketID = htmlentities($_GET["ID"]);
     $database = connect();
 
@@ -24,6 +24,7 @@
         $resul->execute();
     }
 
+    header('Location:ajaxbasket3.php');
 
 
 ?>

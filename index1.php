@@ -25,7 +25,7 @@
 <p class="signedIn"> Not logged in</p>
 </main>
 
-        <section>
+        <section class="section2">
 
 
             <form class="formGrid" method="get" action="search2.php">
@@ -36,13 +36,14 @@
 
                 
             </form>
-            <div id="response"> </div>
             
-            <!-- <div class="cover"> </div> -->
+            <div class="searchResponse" id="response">  </div>
+        
+        
+        <div class="userBasket" id="userB">  </div>
 
-             <div id="userB"> </div>
 
-            <div id="displays"></div>
+        <div class="cover"> </div>
             
 
         </section>
