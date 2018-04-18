@@ -24,6 +24,12 @@ else
 
     $stocklevel = $row["stocklevel"];
 
+    if($qty<1){
+        echo "Enter a valid quantity";
+
+    }
+    else {
+
     if($qty>$stocklevel){
         echo "The specified quantity is bigger than the stock of the product currently in store. Please select lower quantity value. <a href='basket.php'> Go Back </a><br />";
 
@@ -45,6 +51,6 @@ else
     header('Location:ajaxbasket3.php');
 }
    
-}
+}}
 
 ?>

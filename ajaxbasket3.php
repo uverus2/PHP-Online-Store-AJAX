@@ -29,8 +29,9 @@ else
              echo " Product Price: " .$row["price"]. "<br/>" ;
              echo " Product Stock Level: " . $row["stocklevel"] . "<br/> " ;
              echo " Age limit of product: " . $row["agelimit"] . "<br/> " ;
-             echo "<a href='removeBasket.php?ID=" . $row["ID"] . "'> Remove from Basket </a><br />";
+             echo "<a href='#' onclick='remove(".$row["ID"].")'> Remove from basket </a><br />";
              echo "</p>";
          }
+         
         }
 ?>

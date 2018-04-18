@@ -14,7 +14,9 @@ include('functions.php');
   
     
     
-    $results = connect()->query(" INSERT INTO products (name,manufacturer, description , price, stocklevel, agelimit) VALUES ('$name' , '$manufacturer',' $description','$price','$stock','$age')");
+    $results = connect()->query(" INSERT INTO products (name,manufacturer, description , price, stocklevel, agelimit) VALUES ('$name' ,'$manufacturer',' $description','$price','$stock','$age')");
+
+
 
 
     

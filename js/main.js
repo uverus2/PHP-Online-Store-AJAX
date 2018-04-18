@@ -19,6 +19,7 @@ function ajaxrequest() {
 
 }
 
+
 function responseReceived(e) {
     document.getElementById('response').innerHTML = e.target.responseText;
 }
@@ -46,5 +47,18 @@ function add(id) {
 }
 
 function responseS(e) {
+    document.getElementById("userB").innerHTML = e.target.responseText;
+}
+
+
+function remove(id) {
+
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open('GET', 'ajaxRemoveBasket.php?');
+    xhr2.addEventListener("load", removing);
+    xhr2.send();
+}
+
+function removing(e) {
     document.getElementById("userB").innerHTML = e.target.responseText;
 }

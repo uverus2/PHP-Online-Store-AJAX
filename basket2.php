@@ -18,7 +18,7 @@ else
 
     $productsQty=$database->prepare(" SELECT * FROM products WHERE ID = :productID ");
     $productsQty->bindParam(":productID", $productID);
-    $results->execute();
+    $productsQty->execute();
 
     $row=$productsQty->fetch();
 
