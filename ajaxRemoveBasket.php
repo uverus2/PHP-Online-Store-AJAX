@@ -1,6 +1,7 @@
 <?php 
 
 
+include('functions.php');
 
     $basketID = htmlentities($_GET["ID"]);
     $database = connect();
