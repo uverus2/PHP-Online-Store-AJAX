@@ -17,7 +17,7 @@
         <header>
             <img class="logo" src="img/logo.png" alt="Logo">
             <a class="button1 ghost-button-full-color" href="login.php">Log in</a>
-            <a class="button2 ghost-button-full-color" href="">Settings</a>
+            <a class="button2 ghost-button-full-color" href="setting.php">Settings</a>
         </header>
 
         <main>

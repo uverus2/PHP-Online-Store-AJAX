@@ -11,22 +11,17 @@ include('functions.php');
     $age= htmlentities($_POST["agelimit"]);
 
 
-  
+    $database = connect();
     
     
-    $results = connect()->query(" INSERT INTO products (name,manufacturer, description , price, stocklevel, agelimit) VALUES ('$name' ,'$manufacturer',' $description','$price','$stock','$age')");
-
-
-
-
-    
-
-   
-
-    
-
-
-    
+    $results =$database ->prepare(" INSERT INTO products (name,manufacturer, description , price, stocklevel, agelimit) VALUES (:name ,:manufacturer, :description,:price,:stock,:age)");
+    $results->bindParam(":name", $name);
+    $results->bindParam(":manufacturer", $manufacturer);
+    $results->bindParam(":description", $description);
+    $results->bindParam(":price", $price);
+    $results->bindParam(":stock", $stock);
+    $results->bindParam(":age", $age);
+    $results->execute();
 
 
 ?>

@@ -79,6 +79,12 @@ else
 
     echo "<section class='over'>";
 
+    if ($di=="") {
+
+        echo "No such product was found. Have a look at our other stock </br>";
+
+        }
+
         while($row=$result->fetch())
             {
                 echo "<p>";
