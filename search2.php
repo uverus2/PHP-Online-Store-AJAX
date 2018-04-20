@@ -17,7 +17,7 @@ include('functions.php');
     else {
 
         
-        $results=$database->prepare("SELECT * FROM products WHERE name='$di'");
+        $results=$database->prepare("SELECT * FROM products WHERE name=:name");
         $results->bindParam(':name', $di);
         $results->execute();
     }
@@ -58,6 +58,12 @@ include('functions.php');
 <?php
 
     echo "<section class='over'>";
+
+    if ($di=="") {
+
+        echo "No such product was found. Have a look at our other stock </br>";
+
+        }
 
         while($row=$results->fetch())
             {

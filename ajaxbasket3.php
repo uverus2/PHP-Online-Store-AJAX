@@ -6,7 +6,8 @@ $database=connect();
 
 if ( !isset ($_SESSION["gatekeeper"]))
 {
-    echo "You're not logged in. Please log in here <a href='login.php'> here!";
+    echo"<h1>Your Basket</h1>";
+    echo "To add items to your basket please <a href='login.php'> Log In First";
 }
 else
 {  

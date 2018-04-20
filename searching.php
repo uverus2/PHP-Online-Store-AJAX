@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+error_reporting(0);
 include('functions.php');
 $session = $_SESSION["gatekeeper"];
 
@@ -21,7 +21,7 @@ $session = $_SESSION["gatekeeper"];
     else {
 
         
-        $results=$database->prepare("SELECT * FROM products WHERE name='$di'");
+        $results=$database->prepare("SELECT * FROM products WHERE name LIKE '$di%'  ");
         $results->bindParam(':name', $di);
         $results->execute();
     }
@@ -35,9 +35,7 @@ $session = $_SESSION["gatekeeper"];
     $month=$age["monthofbirth"];
     $year=$age["yearofbirth"];
 
-    $date = $year;
-    
-    
+   
 
     $birthday= mktime(0,0,0,$month,$day,$year);
 
@@ -51,6 +49,11 @@ $session = $_SESSION["gatekeeper"];
     
     echo "<h1> Our Products </h1>";
 
+    if ($di=="") {
+
+        echo "<h2> No such product was found. Have a look at our other stock </br> </h2>";
+
+        }
         while($row=$results->fetch())
             {
                 echo "<p>";
@@ -63,6 +66,11 @@ $session = $_SESSION["gatekeeper"];
                 echo " Age limit of product: " . $row["agelimit"] . "<br/> " ;
 
     
+                if ( isset ($_SESSION["gatekeeper"]))
+                    {
+
+                    
+                     
                 $stock = $row["stocklevel"];
                 $pAge = $row["agelimit"];
 
@@ -78,6 +86,7 @@ $session = $_SESSION["gatekeeper"];
             else {
                 echo "Out of stock";
             } 
+            }
                
             }
         
