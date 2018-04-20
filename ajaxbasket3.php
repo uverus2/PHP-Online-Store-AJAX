@@ -32,6 +32,6 @@ else
              echo "<a href='#' onclick='remove(".$row["ID"].")'> Remove from basket </a><br />";
              echo "</p>";
          }
-         
+         echo "<a href='basket3.php'> Checkout here  </a> ";
         }
 ?>

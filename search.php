@@ -37,15 +37,13 @@ else
     $month=$age["monthofbirth"];
     $year=$age["yearofbirth"];
 
-    $date = $year;
-    
-    
+   
 
     $birthday= mktime(0,0,0,$month,$day,$year);
 
     $difference = time() - $birthday;
     
-    $userAge = floor($difference / 31557600) ;
+    $userAge = floor($difference / 31556926) ;
 
 
 

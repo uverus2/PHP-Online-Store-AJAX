@@ -2,7 +2,6 @@
 
 
 include('functions.php');
-
     $basketID = htmlentities($_GET["ID"]);
     $database = connect();
 
@@ -25,6 +24,7 @@ include('functions.php');
         $resul->execute();
     }
 
+    header('Location:ajaxbasket3.php');
 
 
 ?>
