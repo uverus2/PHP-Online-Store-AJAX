@@ -68,7 +68,7 @@ else
          }
          echo "</div>";
 
-         echo "<button class='size'><a href='buy.php?ID=" . $row["ID"] . "'> Checkhout </a><br /> </button>";
+         echo "<button class='size'><a href='buy.php?ID=" . $row["ID"] ."'> Checkhout </a><br /> </button>";
          
 
  echo "</section>";

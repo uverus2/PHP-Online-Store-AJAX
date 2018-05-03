@@ -6,6 +6,8 @@ $session = $_SESSION["gatekeeper"];
 
 $database=connect();
 
+
+
 if ( !isset ($_SESSION["gatekeeper"]))
 {
     echo "You're not logged in. Please log in here <a href='login.php'> here!";
@@ -31,7 +33,7 @@ else
     else {
 
     if($qty>$stocklevel){
-        echo "The specified quantity is bigger than the stock of the product currently in store. Please select lower quantity value. <a href='basket.php'> Go Back </a><br />";
+        echo "The specified quantity is bigger than the stock of the product currently in store. Please select lower quantity value <br />";
 
     }
     else {
@@ -50,6 +52,7 @@ else
 
     
     header('Location:ajaxbasket3.php');
+    
 }
    
 }}

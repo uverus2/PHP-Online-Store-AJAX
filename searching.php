@@ -11,7 +11,11 @@ $session = $_SESSION["gatekeeper"];
 
    $database = connect();
 
-   $resultss = $database->query("SELECT * FROM products WHERE name LIKE '%$di%'");
+   $one = '%' .$di. '%';
+
+   $resultss = $database->prepare("SELECT * FROM products WHERE name LIKE :name ");
+   $resultss->bindParam(":name",$one );
+   $resultss->execute();
    $row= $resultss->fetch();
 
 
@@ -58,7 +62,7 @@ $session = $_SESSION["gatekeeper"];
 
     
     echo "<h1> Our Products </h1>";
-
+  
     
         while($row!=false)
             {
@@ -70,7 +74,7 @@ $session = $_SESSION["gatekeeper"];
                 echo " Product Price: " .$row["price"]. "<br/>" ;
                 echo " Product Stock Level: " . $row["stocklevel"] . "<br/> " ;
                 echo " Age limit of product: " . $row["agelimit"] . "<br/> " ;
-
+               
     
                 if ( isset ($_SESSION["gatekeeper"]))
                     {
@@ -85,6 +89,8 @@ $session = $_SESSION["gatekeeper"];
                 echo "<input type='number' value='1' id='qty".$row["ID"]."'>";
                 echo "<a href='#' onclick='add(".$row["ID"].")'> Add to basket </a><br />";
                 echo "</p>";
+
+                
                 
 
             }
@@ -98,7 +104,7 @@ $session = $_SESSION["gatekeeper"];
                $row = $resultss->fetch();
             }
         
-            //
+            
 
 
 

@@ -48,6 +48,7 @@ function add(id) {
 
 function responseS(e) {
     document.getElementById("userB").innerHTML = e.target.responseText;
+
 }
 
 
