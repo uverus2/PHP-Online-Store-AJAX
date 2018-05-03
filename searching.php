@@ -30,16 +30,6 @@ $session = $_SESSION["gatekeeper"];
         }
 
 
-   /*
-    else {
-
-        
-        $results=$database->prepare("SELECT * FROM products WHERE name LIKE %:name%");
-        $results->bindParam(':name', $di);
-        $results->execute();
-    };
-    */
-
     $users = $database->prepare("SELECT * FROM users WHERE username = :username ");
     $users->bindParam(":username", $session);
     $users->execute();

@@ -32,6 +32,10 @@ include('functions.php');
         $resul->bindParam(":basketID", $basketID);
         $resul->execute();
 
+        $resu =$database->prepare(" UPDATE products SET stocklevel=stocklevel+1 WHERE ID =:productID");
+        $resu->bindParam(":productID",  $productID);
+        $resu->execute();
+
     }
 
     header('Location:ajaxbasket3.php');
