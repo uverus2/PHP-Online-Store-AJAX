@@ -11,20 +11,30 @@ $session = $_SESSION["gatekeeper"];
 
    $database = connect();
 
+   $resultss = $database->query("SELECT * FROM products WHERE name LIKE '%$di%'");
+   $row= $resultss->fetch();
 
 
-    if ($di=="") {
+   if ($row==false) {
 
-         $results = $database->query("SELECT * FROM products");
 
+        echo "<h2> No such product was found. Have a look at our other stock </br> </h2>";
+         $resultss = $database->query("SELECT * FROM products");
+
+        $row = $resultss->fetch();
+         
         }
+
+
+   /*
     else {
 
         
-        $results=$database->prepare("SELECT * FROM products WHERE name LIKE '$di%'  ");
+        $results=$database->prepare("SELECT * FROM products WHERE name LIKE %:name%");
         $results->bindParam(':name', $di);
         $results->execute();
-    }
+    };
+    */
 
     $users = $database->prepare("SELECT * FROM users WHERE username = :username ");
     $users->bindParam(":username", $session);
@@ -49,12 +59,8 @@ $session = $_SESSION["gatekeeper"];
     
     echo "<h1> Our Products </h1>";
 
-    if ($di=="") {
-
-        echo "<h2> No such product was found. Have a look at our other stock </br> </h2>";
-
-        }
-        while($row=$results->fetch())
+    
+        while($row!=false)
             {
                 echo "<p>";
                 echo " ID: ". $row["ID"] ."<br/> ";
@@ -89,7 +95,7 @@ $session = $_SESSION["gatekeeper"];
                 echo "Out of stock";
             } 
             }
-               
+               $row = $resultss->fetch();
             }
         
             //

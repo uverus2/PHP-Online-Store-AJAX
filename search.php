@@ -18,6 +18,7 @@ else
     if ($di=="") {
 
          $result = $database->query("SELECT * FROM products");
+         echo "<h1>Product not found</h1>";
 
         }
     else {
