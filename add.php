@@ -23,5 +23,6 @@ include('functions.php');
     $results->bindParam(":age", $age);
     $results->execute();
 
+    echo "<p> Product added succesfully please go back to <a href='index.php'> home </a>  </p>"
 
 ?>
