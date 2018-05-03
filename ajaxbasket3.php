@@ -35,4 +35,6 @@ else
          }
          echo "<a href='basket3.php'> Checkout here  </a> ";
         }
+
+       
 ?>

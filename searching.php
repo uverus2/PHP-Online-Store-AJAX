@@ -79,6 +79,8 @@ $session = $_SESSION["gatekeeper"];
                 echo "<input type='number' value='1' id='qty".$row["ID"]."'>";
                 echo "<a href='#' onclick='add(".$row["ID"].")'> Add to basket </a><br />";
                 echo "</p>";
+                
+
             }
             else if ($pAge > $userAge){
                 echo "Not old enough";
@@ -90,6 +92,7 @@ $session = $_SESSION["gatekeeper"];
                
             }
         
+            //
 
 
 

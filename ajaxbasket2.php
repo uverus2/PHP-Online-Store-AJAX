@@ -48,6 +48,7 @@ else
     $products->bindParam(":qty", $qty);
     $products->execute();
 
+    
     header('Location:ajaxbasket3.php');
 }
    
