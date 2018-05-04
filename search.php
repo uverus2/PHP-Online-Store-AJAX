@@ -15,19 +15,24 @@ else
 
    $di= htmlentities($_GET["search"]);
 
-    if ($di=="") {
+   $database = connect();
 
-         $result = $database->query("SELECT * FROM products");
-         echo "<h1>Product not found</h1>";
+   $one = '%' .$di. '%';
 
-        }
-    else {
+   $resultss = $database->prepare("SELECT * FROM products WHERE name LIKE :name ");
+   $resultss->bindParam(":name",$one );
+   $resultss->execute();
+   $row= $resultss->fetch();
 
-    $result = $database->prepare("SELECT * FROM products WHERE name =:thename");
-    $result->bindParam(":thename", $di);
-    $result->execute();
+   if ($row==false) {
+
+
+    echo "<h2> No such product was found. Have a look at our other stock </br> </h2>";
+     $resultss = $database->query("SELECT * FROM products");
+
+    $row = $resultss->fetch();
+     
     }
-
 
     $users = $database->prepare("SELECT * FROM users WHERE username = :username ");
     $users->bindParam(":username", $session);
@@ -78,13 +83,7 @@ else
 
     echo "<section class='over'>";
 
-    if ($di=="") {
-
-        echo "No such product was found. Have a look at our other stock </br>";
-
-        }
-
-        while($row=$result->fetch())
+        while($row!=false)
             {
                 echo "<p>";
                 echo " ID: ". $row["ID"] ."<br/> ";

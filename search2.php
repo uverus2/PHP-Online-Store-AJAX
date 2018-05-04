@@ -6,23 +6,26 @@ include('functions.php');
 
 
 
+  
+
    $database = connect();
 
+   $one = '%' .$di. '%';
 
-    if ($di=="") {
+   $resultss = $database->prepare("SELECT * FROM products WHERE name LIKE :name ");
+   $resultss->bindParam(":name",$one );
+   $resultss->execute();
+   $row= $resultss->fetch();
 
-         $results = $database->query("SELECT * FROM products");
+   if ($row==false) {
 
-        }
-    else {
 
-        
-        $results=$database->prepare("SELECT * FROM products WHERE name=:name");
-        $results->bindParam(':name', $di);
-        $results->execute();
+    echo "<h2> No such product was found. Have a look at our other stock </br> </h2>";
+     $resultss = $database->query("SELECT * FROM products");
+
+    $row = $resultss->fetch();
+     
     }
-
-  
     
 
 
@@ -59,13 +62,8 @@ include('functions.php');
 
     echo "<section class='over'>";
 
-    if ($di=="") {
 
-        echo "No such product was found. Have a look at our other stock </br>";
-
-        }
-
-        while($row=$results->fetch())
+        while($row!=false)
             {
                 echo "<p>";
                 echo " ID: ". $row["ID"] ."<br/> ";
